@@ -1,0 +1,25 @@
+---
+interface Props {
+  phase: 'idea' | 'building' | 'alpha' | 'shipped';
+}
+
+const { phase } = Astro.props;
+
+const phases = ['idea', 'building', 'alpha', 'shipped'] as const;
+const currentIndex = phases.indexOf(phase);
+---
+
+<div class="flex items-center gap-1">
+  {phases.map((p, i) => (
+    <div class="flex items-center gap-1">
+      <div
+        class:list={[
+          'h-1.5 w-8 rounded-full transition-colors',
+          i <= currentIndex ? 'bg-accent' : 'bg-border',
+        ]}
+      />
+      {i < phases.length - 1 && <div class="w-0.5" />}
+    </div>
+  ))}
+  <span class="ml-2 text-xs text-text-tertiary capitalize">{phase}</span>
+</div>

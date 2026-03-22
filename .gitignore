@@ -2,3 +2,8 @@
 *.swp
 *.swo
 *~
+node_modules/
+dist/
+.astro/
+.env
+.env.*

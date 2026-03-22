@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StoryBlock from '../components/life/StoryBlock.astro';
+import CategoryFilter from '../components/life/CategoryFilter.tsx';
+import { getCollection } from 'astro:content';
+
+const stories = (await getCollection('stories')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<BaseLayout title="Life - Furong Tian" description="Travel, food, pets, and adventures beyond code">
+  <section class="mx-auto max-w-6xl px-6 py-16 md:py-24">
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">Life</h1>
+    <p class="text-text-secondary mb-8">Adventures beyond the terminal — travel, food, and furry friends.</p>
+
+    <CategoryFilter client:load />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {stories.map((story) => (
+        <StoryBlock
+          title={story.data.title}
+          category={story.data.category}
+          date={story.data.date}
+          coverImage={story.data.coverImage}
+          location={story.data.location}
+          body={story.body || ''}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

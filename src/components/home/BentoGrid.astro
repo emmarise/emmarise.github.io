@@ -1,0 +1,89 @@
+---
+import BentoCard from './BentoCard.astro';
+import SocialLinks from '../shared/SocialLinks.astro';
+
+const techStack = [
+  'Go', 'Java', 'Python', 'TypeScript',
+  'Kubernetes', 'Docker', 'PostgreSQL', 'Redis',
+  'gRPC', 'Kafka', 'AWS', 'Terraform',
+];
+---
+
+<section class="mx-auto max-w-6xl px-6 pb-24">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <!-- What I Do -->
+    <BentoCard title="What I Do" class="md:col-span-2">
+      <p class="text-text-primary leading-relaxed">
+        I build backend systems and infrastructure that scale. Passionate about distributed systems,
+        developer tooling, and the craft of writing reliable software. Currently exploring
+        vibe coding and creative side projects.
+      </p>
+    </BentoCard>
+
+    <!-- Quick Stats -->
+    <BentoCard title="Quick Stats">
+      <div class="space-y-3">
+        <div class="flex justify-between items-center">
+          <span class="text-text-secondary text-sm">Projects</span>
+          <span class="text-accent font-semibold">10+</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-text-secondary text-sm">Languages</span>
+          <span class="text-accent font-semibold">5+</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-text-secondary text-sm">Years Coding</span>
+          <span class="text-accent font-semibold">7+</span>
+        </div>
+      </div>
+    </BentoCard>
+
+    <!-- Currently Building -->
+    <BentoCard title="Currently Building" accent>
+      <div class="space-y-2">
+        <div class="flex items-center gap-2">
+          <span class="inline-block h-2 w-2 rounded-full bg-status-active animate-pulse"></span>
+          <span class="font-medium">Portfolio Site</span>
+        </div>
+        <p class="text-sm text-text-secondary">
+          This very website — built with Astro, Tailwind CSS, and a bit of vibe coding magic.
+        </p>
+        <a href="/projects" class="text-sm text-accent hover:text-accent-hover transition-colors">
+          View all projects &rarr;
+        </a>
+      </div>
+    </BentoCard>
+
+    <!-- Tech Stack -->
+    <BentoCard title="Tech Stack">
+      <div class="flex flex-wrap gap-2">
+        {techStack.map((tech) => (
+          <span class="rounded-full bg-elevated px-3 py-1 text-xs font-medium text-text-secondary border border-border">
+            {tech}
+          </span>
+        ))}
+      </div>
+    </BentoCard>
+
+    <!-- Beyond Code -->
+    <BentoCard title="Beyond Code">
+      <p class="text-text-secondary text-sm mb-3">
+        When I'm not coding, you'll find me exploring new cities, hunting for great restaurants,
+        or hanging out with my pets.
+      </p>
+      <a href="/life" class="text-sm text-accent hover:text-accent-hover transition-colors">
+        See my adventures &rarr;
+      </a>
+    </BentoCard>
+
+    <!-- Get in Touch -->
+    <BentoCard title="Get in Touch" class="md:col-span-3">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <p class="text-text-secondary text-sm">
+          Interested in collaborating or just want to say hi? Reach out!
+        </p>
+        <SocialLinks />
+      </div>
+    </BentoCard>
+  </div>
+</section>

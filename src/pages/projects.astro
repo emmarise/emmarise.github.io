@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/projects/ProjectCard.astro';
+import ProjectFilter from '../components/projects/ProjectFilter.tsx';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+---
+
+<BaseLayout title="Projects - Furong Tian" description="Vibe coding projects and experiments">
+  <section class="mx-auto max-w-6xl px-6 py-16 md:py-24">
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">Projects</h1>
+    <p class="text-text-secondary mb-8">Things I'm building, experimenting with, or have shipped.</p>
+
+    <ProjectFilter client:load />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {projects.map((project) => (
+        <ProjectCard
+          name={project.data.name}
+          description={project.data.description}
+          status={project.data.status}
+          tech={project.data.tech}
+          repoUrl={project.data.repoUrl}
+          demoUrl={project.data.demoUrl}
+          phase={project.data.phase}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

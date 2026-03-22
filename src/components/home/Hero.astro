@@ -1,0 +1,36 @@
+---
+const subtitles = ['Software Engineer', 'Backend Enthusiast', 'Vibe Coder'];
+---
+
+<section class="relative py-24 md:py-32 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent pointer-events-none"></div>
+  <div class="relative mx-auto max-w-6xl px-6 text-center">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
+      Furong Tian
+    </h1>
+    <p class="text-lg md:text-xl text-text-secondary" id="subtitle">
+      {subtitles.join(' / ')}
+    </p>
+    <div class="mt-2 h-0.5 w-16 mx-auto bg-gradient-to-r from-transparent via-accent to-transparent"></div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const subtitles = ['Software Engineer', 'Backend Enthusiast', 'Vibe Coder'];
+    const el = document.getElementById('subtitle');
+    if (!el) return;
+
+    let current = 0;
+    setInterval(() => {
+      current = (current + 1) % subtitles.length;
+      el.style.opacity = '0';
+      setTimeout(() => {
+        el.textContent = subtitles[current];
+        el.style.opacity = '1';
+      }, 300);
+    }, 3000);
+
+    el.style.transition = 'opacity 0.3s ease';
+  });
+</script>

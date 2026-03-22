@@ -1,0 +1,47 @@
+---
+import StatusBadge from './StatusBadge.astro';
+import TechTag from './TechTag.astro';
+import ProgressBar from './ProgressBar.astro';
+
+interface Props {
+  name: string;
+  description: string;
+  status: 'active' | 'experimenting' | 'shipped';
+  tech: string[];
+  repoUrl?: string;
+  demoUrl?: string;
+  phase: 'idea' | 'building' | 'alpha' | 'shipped';
+}
+
+const { name, description, status, tech, repoUrl, demoUrl, phase } = Astro.props;
+---
+
+<article class="group rounded-lg border border-border bg-surface p-6 transition-all duration-300 hover:border-border-hover hover:shadow-[0_4px_24px_rgba(0,0,0,0.4)]" data-status={status}>
+  <div class="flex items-start justify-between gap-3 mb-3">
+    <h3 class="text-lg font-semibold text-text-primary group-hover:text-accent transition-colors">
+      {name}
+    </h3>
+    <StatusBadge status={status} />
+  </div>
+
+  <p class="text-sm text-text-secondary mb-4 leading-relaxed">{description}</p>
+
+  <ProgressBar phase={phase} />
+
+  <div class="flex flex-wrap gap-1.5 mt-4">
+    {tech.map((t) => <TechTag name={t} />)}
+  </div>
+
+  <div class="flex items-center gap-4 mt-4 pt-4 border-t border-border">
+    {repoUrl && (
+      <a href={repoUrl} target="_blank" rel="noopener" class="text-sm text-text-secondary hover:text-accent transition-colors">
+        Source &rarr;
+      </a>
+    )}
+    {demoUrl && (
+      <a href={demoUrl} target="_blank" rel="noopener" class="text-sm text-text-secondary hover:text-accent transition-colors">
+        Live Demo &rarr;
+      </a>
+    )}
+  </div>
+</article>
