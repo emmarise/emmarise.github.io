@@ -17,7 +17,11 @@ export const skills: SkillGroup[] = [
     items: ['PostgreSQL', 'Redis', 'Kafka', 'DynamoDB'],
   },
   {
+    category: 'Frontend & Full-Stack',
+    items: ['Next.js', 'React', 'Tailwind CSS', 'Astro', 'shadcn/ui'],
+  },
+  {
     category: 'Frameworks & Tools',
-    items: ['gRPC', 'REST', 'GraphQL', 'Git', 'Linux'],
+    items: ['gRPC', 'REST', 'GraphQL', 'Git', 'Linux', 'Supabase', 'Vercel'],
   },
 ];

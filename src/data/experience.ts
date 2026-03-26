@@ -13,6 +13,12 @@ export const experience: Experience[] = [
     description: 'Building scalable backend systems and infrastructure. Working with Go, Java, Kubernetes, and distributed systems.',
   },
   {
+    title: 'Personal Projects',
+    company: 'Side Projects',
+    period: '2025 - Present',
+    description: 'Building full-stack apps with AI integration. Finance Tracker — a conversational expense tracker using Next.js 16, Supabase, Groq LLM, and Tailwind CSS 4. Deployed on Vercel.',
+  },
+  {
     title: 'Software Engineer Intern',
     company: 'Tech Startup',
     period: '2021 - 2022',
